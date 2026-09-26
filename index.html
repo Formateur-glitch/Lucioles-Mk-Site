@@ -89,6 +89,15 @@
   @keyframes pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
+  #fireflies {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+  }
   .firefly {
     position: absolute; width: 4px; height: 4px;
     background: var(--gold-light); border-radius: 50%;
