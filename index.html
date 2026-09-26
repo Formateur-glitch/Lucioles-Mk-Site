@@ -3,18 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Auto-École Les Lucioles MK à Calavi Zopah : formations auto, moto et poids lourd. Contactez notre équipe et demandez votre inscription en ligne.">
+<meta name="theme-color" content="#0D0D0D">
 <title>Auto-École Les Lucioles MK – Conduisez vers la Réussite</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #C9A84C;
-    --gold-light: #F0D080;
-    --dark: #0D0D0D;
-    --dark2: #1A1A1A;
-    --dark3: #252525;
-    --white: #FAF8F2;
-    --accent: #2ECC71;
-    --text-muted: #999;
+    --gold: #F4B942;
+    --gold-light: #FFD978;
+    --dark: #071522;
+    --dark2: #0D2232;
+    --dark3: #153247;
+    --white: #F4F8FB;
+    --accent: #5EE0C0;
+    --text-muted: #A8BBC7;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,6 +31,11 @@
   }
 
   /* NAV */
+  .skip-link { position: fixed; top: 8px; left: 8px; z-index: 3000; padding: 12px 16px; background: var(--gold); color: var(--dark); transform: translateY(-160%); border-radius: 4px; }
+  .skip-link:focus { transform: translateY(0); }
+  :focus-visible { outline: 3px solid var(--gold-light); outline-offset: 3px; }
+  .nav-menu-toggle { display: none; background: transparent; color: var(--white); border: 1px solid rgba(201,168,76,.4); border-radius: 4px; padding: 9px 12px; font: inherit; cursor: pointer; }
+
   nav {
     position: fixed; top: 0; width: 100%; z-index: 999;
     background: rgba(13,13,13,0.95);
@@ -80,6 +87,7 @@
     animation: pulse 4s ease-in-out infinite;
   }
   @keyframes pulse { 0%,100%{opacity:.6} 50%{opacity:1} }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
   .firefly {
     position: absolute; width: 4px; height: 4px;
@@ -160,7 +168,7 @@
   .stat-item p { font-size: 0.8rem; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px; }
 
   /* SECTIONS */
-  section { padding: 90px 40px; }
+  section { padding: 90px 40px; scroll-margin-top: 84px; }
   .section-label {
     font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase;
     color: var(--gold); font-weight: 700; margin-bottom: 12px;
@@ -575,7 +583,12 @@
   /* RESPONSIVE */
   @media (max-width: 768px) {
     nav { padding: 14px 20px; }
-    .nav-links { display: none; }
+    nav { flex-wrap: wrap; gap: 12px; }
+    .nav-menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+    .nav-links { display: none; order: 3; flex-basis: 100%; flex-direction: column; gap: 0; padding: 8px 0 4px; }
+    .nav-links.is-open { display: flex; }
+    .nav-links a { display: block; padding: 12px 4px; border-top: 1px solid rgba(255,255,255,.08); }
+    .nav-cta { margin-left: auto; }
     section { padding: 60px 20px; }
     .stats-bar { grid-template-columns: repeat(2,1fr); padding: 30px 20px; }
     .about-grid, .dirigeants-grid, .tarifs-grid, .horaires-grid, .admin-grid { grid-template-columns: 1fr; }
@@ -584,21 +597,89 @@
     .footer-bottom { flex-direction: column; gap: 10px; }
     .form-container { padding: 30px 20px; }
     .modal-box { padding: 36px 24px; }
+    .registrations-table { display: block; overflow-x: auto; white-space: nowrap; }
+    .admin-header, .admin-content { padding-left: 20px; padding-right: 20px; }
   }
+
+  /* VISUAL REFRESH */
+  body { background: var(--dark); }
+  nav { background: rgba(7,21,34,.9); border-bottom-color: rgba(94,224,192,.16); }
+  .nav-logo { letter-spacing: .4px; }
+  .nav-logo::before { content: '✦'; display: inline-grid; place-items: center; width: 29px; height: 29px; margin-right: 9px; border-radius: 50%; color: var(--dark); background: var(--gold); font-size: .9rem; vertical-align: -2px; box-shadow: 0 0 20px rgba(244,185,66,.35); }
+  #hero { min-height: 92vh; padding: 120px 6vw 86px; text-align: left; background: radial-gradient(ellipse at 78% 43%, rgba(25,83,100,.42), transparent 39%), linear-gradient(135deg,#071522 5%,#0a2030 57%,#102c3b 100%); }
+  #hero::before { background: radial-gradient(ellipse at 18% 38%, rgba(244,185,66,.12), transparent 46%); }
+  .hero-content { width: min(1180px,100%); max-width: 1180px; display: grid; grid-template-columns: 1.02fr .98fr; gap: clamp(30px,6vw,88px); align-items: center; }
+  .hero-copy { max-width: 610px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 9px; padding: 9px 15px; border: 1px solid rgba(94,224,192,.35); border-radius: 999px; background: rgba(94,224,192,.07); color: #9cebd9; letter-spacing: 1.8px; }
+  .badge-spark { color: var(--gold); font-size: 1rem; }
+  .hero-title { font-size: clamp(3.2rem,6.4vw,5.8rem); letter-spacing: -2px; line-height: 1.02; margin: 0 0 24px; }
+  .hero-title .gold { color: var(--gold); text-shadow: 0 0 34px rgba(244,185,66,.18); }
+  .hero-sub { max-width: 520px; color: #bdcbd3; font-size: 1.16rem; margin-bottom: 30px; }
+  .hero-buttons { justify-content: flex-start; }
+  .btn-primary { border-radius: 999px; padding: 16px 25px; box-shadow: 0 12px 30px rgba(244,185,66,.18); }
+  .btn-outline { border-radius: 999px; padding: 15px 25px; border-color: rgba(255,255,255,.24); }
+  .hero-trust { margin-top: 28px; color: #a9c0cb; font-size: .9rem; display: flex; align-items: center; gap: 10px; }
+  .trust-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px rgba(94,224,192,.8); }
+  .hero-visual { position: relative; min-height: 480px; overflow: hidden; border: 1px solid rgba(140,193,206,.2); border-radius: 30px; isolation: isolate; background: linear-gradient(145deg,rgba(19,53,72,.95),rgba(7,24,38,.94)); box-shadow: 0 35px 90px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.06); }
+  .hero-visual::before { content: ''; position: absolute; z-index: -1; width: 290px; height: 290px; top: 45px; left: 50%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle at 38% 32%,#ffe3a0,#f4b942 43%,#c97c23 100%); box-shadow: 0 0 80px rgba(244,185,66,.2); }
+  .hero-glow { position: absolute; inset: 0; background: linear-gradient(155deg,transparent 30%,rgba(94,224,192,.07),transparent 72%); }
+  .hero-route { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-permit { position: absolute; top: 105px; left: 50%; transform: translateX(-50%) rotate(-6deg); display: flex; flex-direction: column; align-items: center; justify-content: center; width: 150px; height: 150px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; color: #11283a; background: rgba(255,249,225,.9); box-shadow: 0 20px 50px rgba(9,22,31,.25); }
+  .hero-permit strong { font-family: 'Playfair Display',serif; font-size: 5.2rem; line-height: .88; }
+  .hero-permit span { font-size: .58rem; font-weight: 900; letter-spacing: 2px; }
+  .hero-float { position: absolute; z-index: 2; display: flex; align-items: center; gap: 12px; padding: 13px 16px; border: 1px solid rgba(255,255,255,.13); border-radius: 15px; background: rgba(8,25,39,.82); box-shadow: 0 16px 35px rgba(0,0,0,.22); backdrop-filter: blur(12px); }
+  .hero-float strong,.hero-float small { display: block; }
+  .hero-float strong { color: var(--white); font-size: .88rem; }
+  .hero-float small { color: #a6bbc6; margin-top: 3px; font-size: .72rem; }
+  .hero-float-top { top: 54px; right: 22px; }
+  .hero-float-bottom { bottom: 70px; left: 20px; }
+  .float-icon { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: #071522; background: var(--accent); font-size: 1.1rem; }
+  .hero-visual-label { position: absolute; right: 22px; bottom: 24px; color: #8da6b5; font-size: .62rem; font-weight: 800; letter-spacing: 2.5px; }
+  .stats-bar { background: #0b1d2b; border-color: rgba(94,224,192,.16); }
+  .stat-item h3 { color: var(--gold); }
+  .feature-row,.tarif-card,.dirigeant-card,.horaire-card,.form-container { box-shadow: 0 14px 38px rgba(0,0,0,.16); }
+  .feature-row { border-radius: 14px; border-color: rgba(94,224,192,.13); }
+  .feature-icon { color: var(--accent); background: rgba(94,224,192,.1); }
+  .tarif-card { border-radius: 18px; border-color: rgba(94,224,192,.14); }
+  .tarif-card.featured { background: linear-gradient(145deg,#17374a,#0d2232 78%); }
+  .dirigeant-card,.horaire-card { border-radius: 18px; border-color: rgba(94,224,192,.13); }
+  .loc-btn { border-radius: 999px; }
+  .section-label { color: var(--accent); }
+  @media (max-width: 900px) {
+    #hero { padding: 115px 28px 70px; }
+    .hero-content { grid-template-columns: 1fr; gap: 38px; }
+    .hero-copy { max-width: 720px; }
+    .hero-visual { min-height: 390px; width: min(100%,650px); margin: 0 auto; }
+  }
+  @media (max-width: 768px) {
+    #hero { padding: 105px 20px 58px; }
+    .hero-title { font-size: clamp(2.9rem,13vw,4.4rem); letter-spacing: -1.4px; }
+    .hero-sub { font-size: 1rem; }
+    .hero-buttons { justify-content: flex-start; }
+    .hero-visual { min-height: 330px; border-radius: 22px; }
+    .hero-visual::before { width: 210px; height: 210px; top: 38px; }
+    .hero-permit { top: 68px; width: 118px; height: 118px; }
+    .hero-permit strong { font-size: 4.1rem; }
+    .hero-float-top { top: 18px; right: 12px; transform: scale(.88); transform-origin: top right; }
+    .hero-float-bottom { bottom: 50px; left: 10px; transform: scale(.88); transform-origin: bottom left; }
+  }
+
 </style>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>emailjs.init("OxInMIiKIr3lHMGde");</script>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Aller au contenu</a>
 
 <!-- FIREFLIES -->
-<div id="fireflies"></div>
+<div id="fireflies" aria-hidden="true"></div>
 
 <!-- NAV -->
-<nav>
+<nav aria-label="Navigation principale">
   <div class="nav-logo">Les <span>Lucioles</span> MK</div>
-  <ul class="nav-links">
+  <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Ouvrir le menu">☰</button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#about">À propos</a></li>
     <li><a href="#tarifs">Tarifs</a></li>
     <li><a href="#dirigeants">Équipe</a></li>
@@ -610,19 +691,34 @@
 </nav>
 
 <!-- HERO -->
+<main id="main-content">
 <section id="hero">
   <div class="hero-content">
-    <div class="hero-badge">Auto-École Professionnelle · Calavi Zopah</div>
-    <h1 class="hero-title">
-      Les <span class="gold">Lucioles</span> MK<br>Conduisez vers<br>la Réussite
-    </h1>
-    <p class="hero-sub">
-      Formation de conduite de qualité, soutien garanti à 100%.<br>
-      Un seul examen pratique. Permis certifié.
-    </p>
-    <div class="hero-buttons">
-      <button class="btn-primary" onclick="scrollToSection('inscription')">S'inscrire maintenant</button>
-      <button class="btn-outline" onclick="scrollToSection('tarifs')">Nos formules</button>
+    <div class="hero-copy">
+      <div class="hero-badge"><span class="badge-spark" aria-hidden="true">✦</span> Auto-École · Calavi Zopah</div>
+      <h1 class="hero-title">
+        Prenez la route<br>avec <span class="gold">confiance.</span>
+      </h1>
+      <p class="hero-sub">
+        Auto, moto ou poids lourd : trouvez la formation qui vous correspond et avancez à votre rythme.
+      </p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="scrollToSection('inscription')">Découvrir nos formations <span aria-hidden="true">→</span></button>
+        <button class="btn-outline" onclick="scrollToSection('localisation')">Nous trouver</button>
+      </div>
+      <div class="hero-trust"><span class="trust-dot" aria-hidden="true"></span> Une équipe à votre écoute à Calavi Zopah</div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-glow"></div>
+      <svg class="hero-route" viewBox="0 0 520 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M-25 397C77 394 88 322 158 305C230 288 253 354 328 327C404 300 382 231 441 193C480 168 512 168 548 171" stroke="#29485D" stroke-width="94" stroke-linecap="round"/>
+        <path d="M-25 397C77 394 88 322 158 305C230 288 253 354 328 327C404 300 382 231 441 193C480 168 512 168 548 171" stroke="#10283A" stroke-width="78" stroke-linecap="round"/>
+        <path d="M-25 397C77 394 88 322 158 305C230 288 253 354 328 327C404 300 382 231 441 193C480 168 512 168 548 171" stroke="#F4B942" stroke-width="3" stroke-linecap="round" stroke-dasharray="13 18" opacity=".85"/>
+      </svg>
+      <div class="hero-permit"><span>PERMIS</span><strong>B</strong><span>EN ROUTE</span></div>
+      <div class="hero-float hero-float-top"><span class="float-icon">✦</span><span><strong>À votre rythme</strong><small>Un accompagnement humain</small></span></div>
+      <div class="hero-float hero-float-bottom"><span class="float-icon">⌖</span><span><strong>Calavi Zopah</strong><small>À deux pas de chez vous</small></span></div>
+      <div class="hero-visual-label">LA ROUTE COMMENCE ICI</div>
     </div>
   </div>
 </section>
@@ -630,20 +726,20 @@
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat-item">
-    <h3>100%</h3>
-    <p>Soutien garanti</p>
+    <h3>4</h3>
+    <p>Familles de services</p>
   </div>
   <div class="stat-item">
-    <h3>1</h3>
-    <p>Seul examen pratique</p>
+    <h3>B</h3>
+    <p>Permis voiture</p>
   </div>
   <div class="stat-item">
-    <h3>3</h3>
-    <p>Formules disponibles</p>
+    <h3>A</h3>
+    <p>Permis moto</p>
   </div>
   <div class="stat-item">
-    <h3>6j</h3>
-    <p>Sur 7 disponibles</p>
+    <h3>C / D</h3>
+    <p>Poids lourd & transport</p>
   </div>
 </div>
 
@@ -674,8 +770,8 @@
         <div class="feature-row">
           <div class="feature-icon">⭐</div>
           <div class="feature-text">
-            <h4>Un seul examen pratique</h4>
-            <p>Grâce à notre formation de qualité, nos élèves réussissent dès la première tentative.</p>
+            <h4>Préparation à l’examen</h4>
+            <p>Des cours théoriques et pratiques pour vous préparer à chaque étape.</p>
           </div>
         </div>
         <div class="feature-row">
@@ -695,10 +791,10 @@
         <ul class="permit-list">
           <li>Formation code de la route</li>
           <li>Cours de conduite</li>
-          <li>Soutien personnalisé 100%</li>
+          <li>Accompagnement personnalisé</li>
           <li>Cours en ligne disponibles</li>
           <li>Formation à domicile possible</li>
-          <li>Un seul examen pratique</li>
+          <li>Préparation à l’examen pratique</li>
         </ul>
       </div>
     </div>
@@ -855,7 +951,7 @@
     <p class="section-desc" style="margin:0 auto;">Remplissez ce formulaire et notre équipe vous contactera rapidement pour confirmer votre inscription.</p>
   </div>
   <div class="form-container">
-    <form id="inscriptionForm" name="inscription" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return false;">
+    <form id="inscriptionForm" name="inscription" method="POST" data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="inscription" />
     <p style="display:none;">
       <label>Ne pas remplir : <input name="bot-field" /></label>
@@ -906,8 +1002,9 @@
       <label class="form-label" for="message">Message (facultatif)</label>
       <textarea id="message" name="message" class="form-textarea" placeholder="Questions, disponibilités, informations complémentaires..."></textarea>
     </div>
-    <button type="submit" class="form-submit" onclick="submitForm()">Envoyer ma demande d'inscription</button>
-    <div id="formMessage" class="form-message"></div>
+    <p style="color:#aaa;font-size:.82rem;line-height:1.6;margin:8px 0 14px;">En envoyant ce formulaire, vous autorisez l’auto-école à utiliser ces informations pour répondre à votre demande.</p>
+    <button type="submit" class="form-submit">Envoyer ma demande d'inscription</button>
+    <div id="formMessage" class="form-message" role="status" aria-live="polite"></div>
     </form>
   </div>
 </section>
@@ -960,6 +1057,8 @@
     <div id="copyMsg" class="copy-msg">✅ Lien copié dans le presse-papiers !</div>
   </div>
 </section>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -1061,70 +1160,79 @@
 // ===== SCROLL =====
 function scrollToSection(id) {
   document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  if (navLinks) {
+    navLinks.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.setAttribute('aria-label', 'Ouvrir le menu');
+    menuToggle.textContent = '☰';
+  }
 }
 
-// ===== REGISTRATIONS STORAGE =====
-function getRegistrations() {
-  try { return JSON.parse(localStorage.getItem('lucioles_registrations') || '[]'); } catch { return []; }
-}
-function saveRegistrations(list) {
-  localStorage.setItem('lucioles_registrations', JSON.stringify(list));
-}
+const menuToggle = document.querySelector('.nav-menu-toggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('is-open');
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+  menuToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+  menuToggle.textContent = isOpen ? '✕' : '☰';
+});
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  navLinks.classList.remove('is-open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Ouvrir le menu');
+  menuToggle.textContent = '☰';
+}));
 
 // ===== FORM SUBMISSION =====
-async function submitForm() {
-  const prenom = document.getElementById('prenom').value.trim();
-  const nom = document.getElementById('nom').value.trim();
-  const telephone = document.getElementById('telephone').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const formule = document.getElementById('formule').value;
-  const message = document.getElementById('message').value.trim();
+const inscriptionForm = document.getElementById('inscriptionForm');
+inscriptionForm.addEventListener('submit', submitForm);
+
+async function submitForm(event) {
+  event.preventDefault();
+  const form = event.currentTarget;
+  const button = form.querySelector('.form-submit');
   const msgEl = document.getElementById('formMessage');
-
-  if (!prenom || !nom || !telephone || !formule) {
-    msgEl.className = 'form-message error';
-    msgEl.textContent = '❌ Veuillez remplir tous les champs obligatoires.';
-    return;
-  }
-
+  const data = Object.fromEntries(new FormData(form).entries());
   const registration = {
-    id: Date.now(),
     date: new Date().toLocaleString('fr-FR'),
-    prenom, nom, telephone, email, formule, message
+    prenom: (data.prenom || '').trim(),
+    nom: (data.nom || '').trim(),
+    telephone: (data.telephone || '').trim(),
+    email: (data.email || '').trim(),
+    formule: data.formule || '',
+    message: (data.message || '').trim()
   };
 
-  // Save locally
-  const list = getRegistrations();
-  list.push(registration);
-  saveRegistrations(list);
+  button.disabled = true;
+  button.textContent = 'Envoi en cours…';
+  msgEl.className = 'form-message';
+  msgEl.textContent = '';
 
-  // Netlify Forms submission (source de vérité centralisée)
   try {
-    await fetch('/', {
+    const response = await fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams({
-        'form-name': 'inscription',
-        prenom, nom, telephone, email, formule, message
-      }).toString()
+      body: new URLSearchParams({ 'form-name': 'inscription', ...registration }).toString()
     });
-  } catch(e) {
-    console.warn('Netlify Forms submission failed:', e);
+    if (!response.ok) throw new Error(`Netlify Forms: ${response.status}`);
+
+    try {
+      await sendEmailNotification(registration);
+    } catch (emailError) {
+      console.warn('La notification e-mail n’a pas été envoyée :', emailError);
+    }
+
+    msgEl.className = 'form-message success';
+    msgEl.textContent = '✅ Votre demande a bien été enregistrée. Notre équipe vous contactera prochainement.';
+    form.reset();
+  } catch (error) {
+    console.error('Échec de l’envoi du formulaire :', error);
+    msgEl.className = 'form-message error';
+    msgEl.textContent = '❌ Votre demande n’a pas pu être envoyée. Vérifiez votre connexion ou contactez-nous par téléphone.';
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Envoyer ma demande d’inscription';
   }
-
-  // EmailJS notification
-  try {
-    await sendEmailNotification(registration);
-  } catch(e) {
-    console.warn('EmailJS not configured yet:', e);
-  }
-
-  msgEl.className = 'form-message success';
-  msgEl.textContent = '✅ Votre demande a été envoyée avec succès ! Notre équipe vous contactera très prochainement.';
-
-  // Reset
-  ['prenom','nom','telephone','email','message'].forEach(id => document.getElementById(id).value = '');
-  document.getElementById('formule').value = '';
 }
 
 // ===== EMAILJS (configure with your credentials) =====
@@ -1245,55 +1353,68 @@ function logoutAdmin() {
   }
 }
 
-function loadAdminData() {
+async function loadAdminData() {
   const savedUrl = localStorage.getItem('lucioles_site_url') || '';
   const inp = document.getElementById('siteUrlInput');
   if (inp) inp.value = savedUrl;
 
-  const list = getRegistrations();
-  document.getElementById('totalRegistrations').textContent = list.length;
+  const container = document.getElementById('adminTableContainer');
+  container.innerHTML = '<div class="no-data">Chargement des inscriptions…</div>';
 
-  const today = new Date().toLocaleDateString('fr-FR');
-  const todayCount = list.filter(r => r.date.startsWith(today)).length;
-  document.getElementById('todayRegistrations').textContent = todayCount;
-
-  if (list.length > 0) {
-    document.getElementById('lastFormule').textContent = list[list.length-1].formule;
+  try {
+    const user = typeof netlifyIdentity !== 'undefined' ? netlifyIdentity.currentUser() : null;
+    if (!user) throw new Error('Session administrateur absente.');
+    const token = await user.jwt();
+    const res = await fetch('/.netlify/functions/get-submissions', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) {
+      const details = await res.json().catch(() => ({}));
+      throw new Error(details.error || `Erreur serveur (${res.status}).`);
+    }
+    const list = await res.json();
+    renderAdminData(list);
+  } catch (error) {
+    console.error('Impossible de charger les inscriptions :', error);
+    container.innerHTML = `<div class="no-data">Impossible de charger les inscriptions. ${escapeHTML(error.message)} Vérifiez la configuration Netlify et le rôle administrateur.</div>`;
   }
+}
+
+function escapeHTML(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[char]));
+}
+
+function renderAdminData(list) {
+  document.getElementById('totalRegistrations').textContent = list.length;
+  const today = new Date().toLocaleDateString('fr-FR');
+  const todayCount = list.filter(r => r.date && r.date.startsWith(today)).length;
+  document.getElementById('todayRegistrations').textContent = todayCount;
+  document.getElementById('lastFormule').textContent = list.length ? (list[list.length - 1].formule || '—') : '—';
 
   if (list.length === 0) {
     document.getElementById('adminTableContainer').innerHTML = '<div class="no-data">Aucune inscription pour le moment.</div>';
     return;
   }
 
-  const rows = [...list].reverse().map(r => {
-    const badgeClass = r.formule === 'Ordinaire' ? 'badge-ordinaire' : r.formule === 'Accélérée' ? 'badge-acceleree' : 'badge-domicile';
-    return `<tr>
-      <td>${r.date}</td>
-      <td><strong>${r.prenom} ${r.nom}</strong></td>
-      <td><a href="tel:${r.telephone}" style="color:var(--gold);">${r.telephone}</a></td>
-      <td>${r.email ? `<a href="mailto:${r.email}" style="color:var(--text-muted);">${r.email}</a>` : '—'}</td>
-      <td><span class="badge-formule ${badgeClass}">${r.formule}</span></td>
-      <td>${r.message ? r.message : '—'}</td>
-    </tr>`;
-  }).join('');
+  const rows = [...list].reverse().map(r => `<tr>
+      <td>${escapeHTML(r.date)}</td>
+      <td><strong>${escapeHTML(r.prenom)} ${escapeHTML(r.nom)}</strong></td>
+      <td><a href="tel:${escapeHTML(r.telephone)}" style="color:var(--gold);">${escapeHTML(r.telephone)}</a></td>
+      <td>${r.email ? `<a href="mailto:${escapeHTML(r.email)}" style="color:var(--text-muted);">${escapeHTML(r.email)}</a>` : '—'}</td>
+      <td><span class="badge-formule">${escapeHTML(r.formule)}</span></td>
+      <td>${r.message ? escapeHTML(r.message) : '—'}</td>
+    </tr>`).join('');
 
   document.getElementById('adminTableContainer').innerHTML = `
+    <div style="color:var(--gold);font-size:.8rem;margin-bottom:12px;">🌐 Inscriptions centralisées sur Netlify</div>
     <table class="registrations-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Client</th>
-          <th>Téléphone</th>
-          <th>Email</th>
-          <th>Formule</th>
-          <th>Message</th>
-        </tr>
-      </thead>
+      <thead><tr><th>Date</th><th>Client</th><th>Téléphone</th><th>Email</th><th>Formule</th><th>Message</th></tr></thead>
       <tbody>${rows}</tbody>
-    </table>
-  `;
+    </table>`;
 }
+
 </script>
 </body>
 </html>
