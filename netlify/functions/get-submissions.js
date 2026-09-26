@@ -7,11 +7,18 @@
 exports.handler = async function (event, context) {
   const { user } = context.clientContext || {};
 
-  // 1. Vérifier que la personne est bien connectée en admin
+  // 1. Vérifier que la personne possède bien le rôle admin dans Netlify Identity.
   if (!user) {
     return {
       statusCode: 401,
       body: JSON.stringify({ error: "Non autorisé. Veuillez vous connecter." }),
+    };
+  }
+  const roles = user.app_metadata?.roles || [];
+  if (!roles.includes("admin")) {
+    return {
+      statusCode: 403,
+      body: JSON.stringify({ error: "Accès réservé aux administrateurs." }),
     };
   }
 
